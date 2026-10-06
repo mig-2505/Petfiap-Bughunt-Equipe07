@@ -51,4 +51,16 @@ public class AtendimentoBuilderTest {
                 .comDataHora(data)
                 .construir(9));
     }
+
+    @Test
+    public void deveRecusarAgendamentoNoPassado() {
+        LocalDateTime ontem = LocalDateTime.now().minusDays(1);
+
+        assertThrows(IllegalArgumentException.class, () -> new AtendimentoBuilder()
+                .comTipo("BANHO")
+                .comPet("Rex", "PEQUENO")
+                .comTutor("Ana")
+                .comDataHora(ontem)
+                .construir(1));
+    }
 }
