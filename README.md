@@ -2,7 +2,7 @@
 
 ## Identificação
 
-**Grupo:** Os Debugadores (Altere para o nome do seu grupo)
+**Grupo:** Grupo 07
 
 | Integrante       | RM       | Turma |
 |------------------|----------|-------|
