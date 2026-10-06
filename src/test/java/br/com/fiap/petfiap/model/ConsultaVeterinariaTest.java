@@ -30,4 +30,10 @@ public class ConsultaVeterinariaTest {
         // Assert
         assertEquals(30, duracao);
     }
+
+    @Test
+    public void deveCustar150ReaisIndependenteDoPorte() {
+        double preco = consultaDaMimi().calcularPreco();
+        assertEquals(150.0, preco);
+    }
 }
