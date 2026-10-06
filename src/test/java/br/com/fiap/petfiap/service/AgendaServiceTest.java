@@ -122,4 +122,16 @@ public class AgendaServiceTest {
         // Verifica se o repository não tentou salvar
         verify(repository, never()).save(any());
     }
+
+    @Test
+    public void deveCancelarAtendimentoAgendado() {
+        Banho agendado = banhoDoRexAmanha10h();
+        when(repository.findById(1L)).thenReturn(Optional.of(agendado));
+        when(repository.save(agendado)).thenReturn(agendado);
+
+        Atendimento cancelado = service.cancelar(1L);
+
+        assertEquals("CANCELADO", cancelado.getStatus());
+        verify(repository).save(agendado);
+    }
 }
