@@ -110,4 +110,16 @@ public class AgendaServiceTest {
         // Act + Assert
         assertThrows(AtendimentoNaoEncontradoException.class, () -> service.buscarPorId(99L));
     }
+
+    @Test
+    public void deveRecusarCancelamentoDeAtendimentoConcluido() {
+        Banho jaConcluido = banhoDoRexAmanha10h();
+        jaConcluido.setStatus("CONCLUIDO");
+        when(repository.findById(1L)).thenReturn(Optional.of(jaConcluido));
+
+        assertThrows(StatusInvalidoException.class, () -> service.cancelar(1L));
+
+        // Verifica se o repository não tentou salvar
+        verify(repository, never()).save(any());
+    }
 }
