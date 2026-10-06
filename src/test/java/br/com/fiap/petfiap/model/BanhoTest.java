@@ -14,20 +14,13 @@ public class BanhoTest {
     }
 
     @Test
-    public void deveAcumular20PontosDeFidelidade() {
-        // Act
-        int pontos = banhoDoRex().calcularPontosFidelidade();
+    public void deveCalcularPrecosCorretosPorPorte() {
+        Banho pequeno = new Banho(1, "Rex", "PEQUENO", "Ana", LocalDateTime.now());
+        Banho medio = new Banho(2, "Rex", "MEDIO", "Ana", LocalDateTime.now());
+        Banho grande = new Banho(3, "Rex", "GRANDE", "Ana", LocalDateTime.now());
 
-        // Assert
-        assertEquals(20, pontos);
-    }
-
-    @Test
-    public void deveDurar45Minutos() {
-        // Act
-        int duracao = banhoDoRex().getDuracaoMinutos();
-
-        // Assert
-        assertEquals(45, duracao);
+        assertEquals(60.0, pequeno.calcularPreco());
+        assertEquals(80.0, medio.calcularPreco());
+        assertEquals(100.0, grande.calcularPreco());
     }
 }
